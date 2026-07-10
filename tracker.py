@@ -8,11 +8,16 @@ print(average_time(rank_points))
 def fastest_time(times):
     return min(times)
 
-print(fastest_time(swim_times))
+
 def slowest_time(times):
     return max(times)
-print(slowest_time(swim_times))
+
 def count_time(times):
     return len(times)
+def difference(times):
+    return max(times) - min(times)
+print(fastest_time(swim_times))
+print(slowest_time(swim_times))
 print("The amount of times you recorded your races was")
 print (count_time(swim_times))
+print(difference(swim_times))

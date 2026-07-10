@@ -21,3 +21,7 @@ print(slowest_time(swim_times))
 print("The amount of times you recorded your races was")
 print (count_time(swim_times))
 print(difference(swim_times))
+swim_log = {"Mon": 28.5, "Wed": 27.9, "Fri": 27.4, "Sat":26.8}
+print(swim_log)
+best_day = min(swim_log, key=swim_log.get)
+print(best_day)

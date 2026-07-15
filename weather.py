@@ -17,14 +17,22 @@ country = input("Enter a country")
 url = f"https://geocoding-api.open-meteo.com/v1/search?name={country}&count=1"
 reply=requests.get(url)
 dictionary1 = reply.json()
-lat = dictionary1["results"][0]["latitude"]
-lon = dictionary1["results"][0]["longitude"]
-print (lat)
-print(lon)
-url2 = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m"
-reply2 = requests.get(url2)
-dictionary2 = reply2.json()
-current2 = dictionary2["current"]
-print (current2)
-temp2 = current2["temperature_2m"]
-print("Temperature in "+country+" is "+temp2)
+dictionary1 = reply.json()
+
+if "results" not in dictionary1:
+    print(f"Sorry, couldn't find a place called {country}.")
+else:
+    lat = dictionary1["results"][0]["latitude"]
+    lon = dictionary1["results"][0]["longitude"]
+    # ...rest of your weather code goes in here
+    lat = dictionary1["results"][0]["latitude"]
+    lon = dictionary1["results"][0]["longitude"]
+    print (lat) 
+    print(lon)
+    url2 = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m"
+    reply2 = requests.get(url2)
+    dictionary2 = reply2.json()
+    current2 = dictionary2["current"]
+    print (current2)
+    temp2 = current2["temperature_2m"]
+    print(f"Temperature in {country} is {temp2}°C")

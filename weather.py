@@ -1,5 +1,12 @@
 import requests
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+key = os.getenv("WEATHER_KEY")
+print(key)
+
 url = "https://api.open-meteo.com/v1/forecast?latitude=25.2&longitude=55.27&current=temperature_2m"
 
 response = requests.get(url)
@@ -13,7 +20,7 @@ print(current)
 temp = current["temperature_2m"]
 print("Dubai ",temp)
 
-country = input("Enter a country")
+country = input("Enter a country: ")
 url = f"https://geocoding-api.open-meteo.com/v1/search?name={country}&count=1"
 reply=requests.get(url)
 dictionary1 = reply.json()

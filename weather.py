@@ -31,15 +31,11 @@ if "results" not in dictionary1:
 else:
     lat = dictionary1["results"][0]["latitude"]
     lon = dictionary1["results"][0]["longitude"]
-    # ...rest of your weather code goes in here
-    lat = dictionary1["results"][0]["latitude"]
-    lon = dictionary1["results"][0]["longitude"]
-    print (lat) 
-    print(lon)
     url2 = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m"
     reply2 = requests.get(url2)
     dictionary2 = reply2.json()
-    current2 = dictionary2["current"]
-    print (current2)
-    temp2 = current2["temperature_2m"]
-    print(f"Temperature in {country} is {temp2}°C")
+    if "current" not in dictionary2:
+        print("Weather data unavailable for that location.")
+    else:
+        temp2 = dictionary2["current"]["temperature_2m"]
+        print(f"Temperature in {country} is {temp2}°C")
